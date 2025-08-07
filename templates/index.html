@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Python Guide Bot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-gray-900 to-black text-white min-h-screen flex justify-center items-center font-sans">
+
+  <div class="w-full max-w-2xl p-6 rounded-xl shadow-xl bg-white bg-opacity-10 backdrop-blur-md border border-white border-opacity-20">
+
+    <h1 class="text-4xl font-bold text-center mb-6"> Python Guide Bot</h1>
+
+    <form method="POST" class="flex flex-col space-y-4">
+      <input
+        type="text"
+        name="question"
+        placeholder="Ask something about Python..."
+        required
+        class="w-full p-3 rounded-xl text-gray-900 focus:ring-4 focus:ring-purple-400 outline-none shadow-md"
+      />
+
+      <button
+        type="submit"
+        class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold py-3 rounded-xl shadow-md transition hover:scale-105"
+      >
+         Ask Python Guide
+      </button>
+    </form>
+
+    {% if history %}
+    <div class="mt-8 max-h-96 overflow-y-auto pr-2 space-y-4 scrollbar-thin scrollbar-thumb-purple-600 scrollbar-track-white/10">
+
+      {% for chat in history|reverse %}
+        <div class="p-4 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-xl shadow">
+          <p class="text-sm text-blue-200 font-semibold">👤 You:</p>
+          <p class="text-white mb-2">{{ chat.question }}</p>
+          <hr class="border-white border-opacity-10 my-2" />
+          <p class="text-sm text-green-300 font-semibold">🤖 Bot:</p>
+          <p class="text-white whitespace-pre-line">{{ chat.answer }}</p>
+        </div>
+      {% endfor %}
+
+    </div>
+    {% endif %}
+
+  </div>
+
+</body>
+</html>
