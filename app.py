@@ -13,7 +13,8 @@ SYSTEM_PROMPT = (
 
 def get_llama_response(user_input):
     response = ollama.chat(
-        model='tinyllama',
+        # model='tinyllama', # llama3-8b, llama3-70b, tinyllama
+        model="llama3-8b",
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_input}
